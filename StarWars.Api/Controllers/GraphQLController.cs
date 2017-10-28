@@ -6,6 +6,7 @@ using GraphQL;
 using GraphQL.Types;
 using Microsoft.AspNetCore.Mvc;
 using StarWars.Api.Models;
+using StarWars.Data.InMemory;
 
 namespace StarWars.Api.Controllers
 {
@@ -15,7 +16,7 @@ namespace StarWars.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
         {
-            var schema = new Schema { Query = new StarWarsQuery() };
+            var schema = new Schema { Query = new StarWarsQuery(new DroidRepository()) };
 
             var result = await new DocumentExecuter().ExecuteAsync(_ =>
             {

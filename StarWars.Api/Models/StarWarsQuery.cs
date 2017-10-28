@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GraphQL.Types;
+using StarWars.Core.Data;
 using StarWars.Core.Models;
 
 namespace StarWars.Api.Models
 {
     public class StarWarsQuery : ObjectGraphType
     {
-        public StarWarsQuery()
+        public StarWarsQuery(IDroidRepository droidRepository)
         {
-            Field<DroidType>("hero", resolve: context => new Droid { Id = 1, Name = "R2-D2" });
+            Field<DroidType>(
+                "hero", 
+                resolve: context => droidRepository.Get(1)
+            );
         }
     }
 }
