@@ -21,10 +21,7 @@ namespace StarWars.Api.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Index() => View();
 
         [HttpPost]
         public async Task<IActionResult> Post([FromBody] GraphQLQuery query)
