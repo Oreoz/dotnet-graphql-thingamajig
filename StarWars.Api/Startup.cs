@@ -52,6 +52,7 @@ namespace StarWars.Api
 
             app.UseMvc();
 
+            db.EnsureDatabaseMigrated();
             db.EnsureSeedData();
         }
     }

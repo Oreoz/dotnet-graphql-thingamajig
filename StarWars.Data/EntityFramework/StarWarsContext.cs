@@ -10,7 +10,7 @@ namespace StarWars.Data.EntityFramework
     {
         public StarWarsContext(DbContextOptions options) : base(options)
         {
-            Database.EnsureCreated();
+
         }
 
         public DbSet<Droid> Droids { get; set; }
